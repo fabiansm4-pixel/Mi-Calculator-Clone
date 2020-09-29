@@ -11,7 +11,7 @@
 APK-версия приложения: [Calculator-debug.apk.zip](https://github.com/ilyxan89/MiCalculator/files/5295973/Calculator-debug.apk.zip)
 
 Окно калькулятора:
-![Screenshot_2020-09-29-04-49-18-208_com example calculator](https://user-images.githubusercontent.com/71913328/94504514-9e643900-0211-11eb-81ff-d0cbecf0d1a7.jpg)
+![Screenshot_2020-09-29-12-44-33-256_com example calculator](https://user-images.githubusercontent.com/71913328/94543323-9973a980-0252-11eb-96dc-40936c58be83.jpg)
 
 Основное меню:
 ![Screenshot_2020-09-29-04-50-15-671_com example calculator](https://user-images.githubusercontent.com/71913328/94504541-ae7c1880-0211-11eb-9614-ef26ed68f08a.jpg)
