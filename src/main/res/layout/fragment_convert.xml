@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    tools:context=".ConvertFragment">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:orientation="horizontal"
+        android:columnCount="3"
+        android:rowCount="5">
+
+        <LinearLayout
+            android:id="@+id/bmi_button"
+            android:layout_columnWeight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            style="?android:attr/borderlessButtonStyle"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/bmi_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="@drawable/bmi"/>
+
+            <TextView
+                android:id="@+id/bmi_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="16dp"
+                android:text="ИМТ"
+                android:textColor="@color/DarkGrey"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <!--<Button
+            android:id="@+id/imageButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_columnWeight="1"
+            style="?android:attr/borderlessButtonStyle"
+            android:drawableTop="@drawable/bmi"
+            android:textAllCaps="false"
+            android:drawablePadding="15dp"
+            android:text="ИМТ" />-->
+
+        <LinearLayout
+            android:id="@+id/age_button"
+            android:layout_columnWeight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            style="?android:attr/borderlessButtonStyle"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/age_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="@drawable/age"/>
+
+            <TextView
+                android:id="@+id/age_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:text="Возраст"
+                android:textColor="@color/DarkGrey"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <!--<Button
+            android:id="@+id/imageButton2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_columnWeight="1"
+            style="?android:attr/borderlessButtonStyle"
+            android:drawableTop="@drawable/age"
+            android:textAllCaps="false"
+            android:drawablePadding="15dp"
+            android:text="Возраст" />-->
+
+        <LinearLayout
+            android:id="@+id/discount_button"
+            android:layout_columnWeight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            style="?android:attr/borderlessButtonStyle"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/discount_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="@drawable/discount"/>
+
+            <TextView
+                android:id="@+id/discount_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:text="Скидка"
+                android:textColor="@color/DarkGrey"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <!--<Button
+            android:id="@+id/imageButton3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_columnWeight="1"
+            style="?android:attr/borderlessButtonStyle"
+            android:drawableTop="@drawable/discount"
+            android:textAllCaps="false"
+            android:drawablePadding="15dp"
+            android:text="Скидка" />-->
+
+        <LinearLayout
+            android:id="@+id/percent_button"
+            android:layout_columnWeight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="40dp"
+            android:gravity="center"
+            style="?android:attr/borderlessButtonStyle"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/percent_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="@drawable/percent"/>
+
+            <TextView
+                android:id="@+id/percent_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:text="Процент"
+                android:textColor="@color/DarkGrey"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <!--<Button
+            android:id="@+id/imageButton4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_columnWeight="1"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_gravity="fill"
+            android:drawableTop="@drawable/percent" />-->
+
+        <LinearLayout
+            android:id="@+id/data_button"
+            android:layout_columnWeight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="40dp"
+            android:gravity="center"
+            style="?android:attr/borderlessButtonStyle"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/data_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="@drawable/data"/>
+
+            <TextView
+                android:id="@+id/data_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:text="Дата"
+                android:textColor="@color/DarkGrey"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <!--<Button
+            android:id="@+id/imageButton5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_columnWeight="1"
+            style="?android:attr/borderlessButtonStyle"
+            android:drawableTop="@drawable/data" />-->
+
+        <LinearLayout
+            android:id="@+id/length_button"
+            android:layout_columnWeight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="40dp"
+            android:gravity="center"
+            style="?android:attr/borderlessButtonStyle"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/length_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="@drawable/length"/>
+
+            <TextView
+                android:id="@+id/length_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:text="Длина"
+                android:textColor="@color/DarkGrey"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <!--<Button
+            android:id="@+id/imageButton6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_columnWeight="1"
+            style="?android:attr/borderlessButtonStyle"
+            android:drawableTop="@drawable/length" />-->
+
+        <LinearLayout
+            android:id="@+id/square_button"
+            android:layout_columnWeight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="40dp"
+            android:gravity="center"
+            style="?android:attr/borderlessButtonStyle"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/square_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="@drawable/square"/>
+
+            <TextView
+                android:id="@+id/square_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:text="Площадь"
+                android:textColor="@color/DarkGrey"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <!--<Button
+            android:id="@+id/imageButton7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_columnWeight="1"
+            style="?android:attr/borderlessButtonStyle"
+            android:drawableTop="@drawable/square" />-->
+
+        <LinearLayout
+            android:id="@+id/volume_button"
+            android:layout_columnWeight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="40dp"
+            android:gravity="center"
+            style="?android:attr/borderlessButtonStyle"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/volume_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="@drawable/volume"/>
+
+            <TextView
+                android:id="@+id/volume_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:text="Объём"
+                android:textColor="@color/DarkGrey"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <!--<Button
+            android:id="@+id/imageButton8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_columnWeight="1"
+            style="?android:attr/borderlessButtonStyle"
+            android:drawableTop="@drawable/volume" />-->
+
+        <LinearLayout
+            android:id="@+id/temperature_button"
+            android:layout_columnWeight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="40dp"
+            android:gravity="center"
+            style="?android:attr/borderlessButtonStyle"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/temperature_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="@drawable/temperature"/>
+
+            <TextView
+                android:id="@+id/temperature_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:text="Температура"
+                android:textColor="@color/DarkGrey"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <!--<Button
+            android:id="@+id/imageButton9"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_columnWeight="1"
+            style="?android:attr/borderlessButtonStyle"
+            android:drawableTop="@drawable/temperature" />-->
+
+        <LinearLayout
+            android:id="@+id/speed_button"
+            android:layout_columnWeight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="40dp"
+            android:gravity="center"
+            style="?android:attr/borderlessButtonStyle"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/speed_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="@drawable/speed"/>
+
+            <TextView
+                android:id="@+id/speed_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:text="Скорость"
+                android:textColor="@color/DarkGrey"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <!--<Button
+            android:id="@+id/imageButton10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_columnWeight="1"
+            style="?android:attr/borderlessButtonStyle"
+            android:drawableTop="@drawable/speed" />-->
+
+        <LinearLayout
+            android:id="@+id/time_button"
+            android:layout_columnWeight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="40dp"
+            android:gravity="center"
+            style="?android:attr/borderlessButtonStyle"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/time_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="@drawable/time"/>
+
+            <TextView
+                android:id="@+id/time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:text="Время"
+                android:textColor="@color/DarkGrey"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <!--<Button
+            android:id="@+id/imageButton11"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_columnWeight="1"
+            style="?android:attr/borderlessButtonStyle"
+            android:drawableTop="@drawable/time" />-->
+
+        <LinearLayout
+            android:id="@+id/weight_button"
+            android:layout_columnWeight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="40dp"
+            android:gravity="center"
+            style="?android:attr/borderlessButtonStyle"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/weight_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="@drawable/weight"/>
+
+            <TextView
+                android:id="@+id/weight_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:text="Масса"
+                android:textColor="@color/DarkGrey"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <!--<Button
+            android:id="@+id/imageButton12"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_columnWeight="1"
+            style="?android:attr/borderlessButtonStyle"
+            android:drawableTop="@drawable/weight" />-->
+
+        <LinearLayout
+            android:id="@+id/scale_of_notation_button"
+            android:layout_columnWeight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="40dp"
+            android:gravity="center"
+            style="?android:attr/borderlessButtonStyle"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/scale_of_notation_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:background="@drawable/scale_of_notation"/>
+
+            <TextView
+                android:id="@+id/scale_of_notation_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:text="Система счисления"
+                android:textColor="@color/DarkGrey"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <!--<Button
+            android:id="@+id/imageButton13"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_columnWeight="1"
+            style="?android:attr/borderlessButtonStyle"
+            android:drawableTop="@drawable/scale_of_notation" />-->
+    </GridLayout>
+
+</ScrollView>

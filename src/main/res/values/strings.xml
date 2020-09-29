@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Mi Калькулятор</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
+    <string name="Info">&#160;&#160;Информация</string>
+    <string name="clear_all">&#160;&#160;Очистить всё</string>
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_rectangle_menu"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_clear_all"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        style="@style/AppTheme"
+        android:paddingStart="20dp"
+        android:paddingEnd="25dp"
+        android:text="@string/clear_all"
+        android:background="@drawable/selector_draw_menu_button_clear"
+        android:drawableStart="@drawable/clear_all_icon"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/roboto"
+        tools:ignore="RtlSymmetry" />
+
+    <Button
+        android:id="@+id/btn_info"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        style="@style/AppTheme"
+        android:paddingStart="20dp"
+        android:paddingEnd="25dp"
+        android:text="@string/Info"
+        android:background="@drawable/selector_draw_menu_button_info"
+        android:drawableStart="@drawable/info_icon"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/roboto"
+        tools:ignore="RtlSymmetry" />
+
+
+</LinearLayout>
