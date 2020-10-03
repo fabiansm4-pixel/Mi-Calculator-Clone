@@ -1,4 +1,4 @@
-# Clone Mi Calculator
+# Mi Calculator Clone
 Этой мой первый крупный проект под Android. 
 Делаю клон калькулятора от Xiaomi.
 Работа над приложением еще продолжается. 
