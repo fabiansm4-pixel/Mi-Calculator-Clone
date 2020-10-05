@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                     popUpWindow();
                 } else {
                     multi_window_button.setVisibility(View.INVISIBLE);
-                    clickListenerPopupWindow();
+                    clickListenerPopupButton();
                 }
             }
 
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                     popUpWindow();
                 } else {
                     multi_window_button.setVisibility(View.INVISIBLE);
-                    clickListenerPopupWindow();
+                    clickListenerPopupButton();
                 }
             }
 
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
                     popUpWindow();
                 } else {
                     multi_window_button.setVisibility(View.INVISIBLE);
-                    clickListenerPopupWindow();
+                    clickListenerPopupButton();
                 }
             }
         });
@@ -281,8 +281,7 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onClick(View v) {
-                                Intent intent = new Intent(getApplication(), BaseActivity.class);
-                                startActivity(intent);
+                                callIntent();
                                 popupWindow.dismiss();
                             }
                         });
@@ -297,15 +296,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //переход на страницу "О приложении"
-    public void clickListenerPopupWindow() {
+    public void clickListenerPopupButton() {
         popup_button.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), BaseActivity.class);
-                startActivity(intent);
+                callIntent();
             }
         });
+    }
+
+    //вызов окна "О приложении"
+    public void callIntent() {
+        Intent intent = new Intent(getApplication(), BaseActivity.class);
+        intent.putExtra("keyIntent", "viewInfo");
+        startActivity(intent);
     }
 
     //запрос разрешения у пользователя

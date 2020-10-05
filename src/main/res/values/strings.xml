@@ -1,8 +1,36 @@
 <resources>
-    <string name="app_name">Mi Калькулятор</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
-    <string name="tab_text_3">Tab 3</string>
-    <string name="Info">&#160;&#160;Информация</string>
+    <string name="app_name">Mi Калькулятор Clone</string>
     <string name="clear_all">&#160;&#160;Очистить всё</string>
+    <string name="Info">&#160;&#160;Информация</string>
+
+    //конвертеры величин
+    <string name="bmi">ИМТ</string>
+    <string name="age">Возраст</string>
+    <string name="discount">Скидка</string>
+    <string name="percent">Процент</string>
+    <string name="data">Дата</string>
+    <string name="length">Длина</string>
+    <string name="length_calc">Конвертер длины</string>
+    <string name="square">Площадь</string>
+    <string name="square_calc">Конвертер площади</string>
+    <string name="volume">Объём</string>
+    <string name="volume_calc">Конвертер объёма</string>
+    <string name="temperature">Температура</string>
+    <string name="temperature_calc">Конвертер температуры</string>
+    <string name="speed">Скорость</string>
+    <string name="speed_calc">Конвертер скорости</string>
+    <string name="time">Время</string>
+    <string name="time_calc">Конвертер времени</string>
+    <string name="weight">Масса</string>
+    <string name="weight_calc">Конвертер массы</string>
+    <string name="scale_of_notation">Система счисления</string>
+
+    //финансовые конвертеры
+    <string name="investments">Инвестиции</string>
+    <string name="investments_calc">Калькулятор инвестиций</string>
+    <string name="currency">Валюта</string>
+    <string name="currency_calc">Конвертер валют</string>
+    <string name="credit">Кредит</string>
+    <string name="credit_calc">Кредитный калькулятор</string>
+    <string name="split_bill">Разделить счёт</string>
 </resources>

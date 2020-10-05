@@ -34,5 +34,4 @@
         android:fontFamily="@font/roboto"
         tools:ignore="RtlSymmetry" />
 
-
 </LinearLayout>
