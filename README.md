@@ -8,7 +8,7 @@
 Сделан дизайн для плавающего окна калькулятора и конвертеров. 
 Функциональность к ним будет добавлена позже.
 
-APK-версия приложения: [Calculator.zip](https://github.com/ilyxan89/MiCalculator/files/5298274/Calculator.zip)
+APK-версия приложения: [Calculator.zip](https://github.com/ilyxan89/Mi-Calculator-Clone/files/5324837/Calculator.zip)
 
 Окно калькулятора:
 ![Screenshot_2020-09-29-12-44-33-256_com example calculator](https://user-images.githubusercontent.com/71913328/94543323-9973a980-0252-11eb-96dc-40936c58be83.jpg)
