@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class ConvertFragment extends Fragment {
 
@@ -75,7 +76,10 @@ public class ConvertFragment extends Fragment {
                         callViewByKey("viewWeight");
                         break;
                     case R.id.scale_of_notation_button:
-                        callViewByKey("viewScaleOfNotation");
+                        Toast.makeText(getContext(),
+                                "Данный конвертер временно недоступен.",
+                                Toast.LENGTH_SHORT).show();
+//                        callViewByKey("viewScaleOfNotation");
                         break;
                 }
             }

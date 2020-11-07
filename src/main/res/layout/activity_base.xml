@@ -31,89 +31,160 @@
         android:id="@+id/view_converter_screen"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="3"
         android:orientation="vertical">
 
         <RelativeLayout
             android:id="@+id/view_converter_string1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginEnd="25dp"
             android:layout_weight="1"
             android:orientation="horizontal">
 
             <Spinner
-                android:id="@+id/spinner_input1"
+                android:id="@+id/string1_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
                 android:layout_centerInParent="true"
                 android:spinnerMode="dialog" />
 
             <TextView
-                android:id="@+id/output1"
+                android:id="@+id/string1_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"/>
+
+            <TextView
+                android:id="@+id/string1_input"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:clickable="true"
                 android:text="0"
-                android:textColor="@android:color/black"
+                android:textColor="@color/Orange"
                 android:textSize="26sp" />
+
+            <EditText
+                android:id="@+id/string1_editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:background="@android:color/transparent"
+                android:textStyle="bold"
+                android:gravity="end"
+                android:drawablePadding="2dp"
+                android:drawableEnd="@drawable/arrow_drop_down_24"
+                android:hint="Укажите дату"/>
 
         </RelativeLayout>
 
+        <TextView
+            android:id="@+id/string1_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textAlignment="viewEnd"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="14sp"/>
 
         <RelativeLayout
             android:id="@+id/view_converter_string2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginEnd="25dp"
             android:layout_weight="1">
 
             <Spinner
-                android:id="@+id/spinner_input2"
+                android:id="@+id/string2_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
                 android:layout_centerInParent="true"
                 android:spinnerMode="dialog" />
 
             <TextView
-                android:id="@+id/output2"
+                android:id="@+id/string2_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"/>
+
+            <TextView
+                android:id="@+id/string2_input"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerInParent="true"
+                android:layout_alignParentBottom="true"
+                android:clickable="true"
                 android:text="0"
                 android:textColor="@android:color/black"
                 android:textSize="26sp" />
 
+            <EditText
+                android:id="@+id/string2_editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:background="@android:color/transparent"
+                android:textColor="@color/Orange"
+                android:textStyle="bold"
+                android:gravity="end"
+                android:drawablePadding="2dp"
+                android:drawableEnd="@drawable/arrow_drop_down_24"
+                android:hint="Укажите дату"/>
+
         </RelativeLayout>
+
+        <TextView
+            android:id="@+id/string2_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textAlignment="viewEnd"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:textSize="14sp"/>
 
         <RelativeLayout
             android:id="@+id/view_converter_string3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginEnd="25dp"
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/view_result_text"
+                android:id="@+id/string3_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_centerInParent="true"
+                android:layout_alignParentBottom="true"
                 android:textColor="@android:color/black"
                 android:textSize="30sp" />
 
             <TextView
-                android:id="@+id/result_output"
+                android:id="@+id/string3_output"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -128,16 +199,15 @@
             android:id="@+id/view_converter_string4"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/view_converter_string4_text"
+                android:id="@+id/string4_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:textColor="@android:color/black"
-                android:textSize="26sp" />
+                android:layout_marginTop="15dp" />
 
         </RelativeLayout>
     </LinearLayout>
@@ -156,7 +226,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="15dp"
-        android:layout_weight="3">
+        android:layout_weight="4">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -165,7 +235,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/m_btn7"
+                android:id="@+id/c_btn7"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -176,7 +246,7 @@
                 android:textSize="34sp" />
 
             <Button
-                android:id="@+id/m_btn4"
+                android:id="@+id/c_btn4"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -187,7 +257,7 @@
                 android:textSize="34sp" />
 
             <Button
-                android:id="@+id/m_btn1"
+                android:id="@+id/c_btn1"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -198,7 +268,7 @@
                 android:textSize="34sp" />
 
             <Button
-                android:id="@+id/m_btn_nan"
+                android:id="@+id/c_btn_nan"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -218,7 +288,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/m_btn8"
+                android:id="@+id/c_btn8"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -229,7 +299,7 @@
                 android:textSize="34sp" />
 
             <Button
-                android:id="@+id/m_btn5"
+                android:id="@+id/c_btn5"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -240,7 +310,7 @@
                 android:textSize="34sp" />
 
             <Button
-                android:id="@+id/m_btn2"
+                android:id="@+id/c_btn2"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -251,7 +321,7 @@
                 android:textSize="34sp" />
 
             <Button
-                android:id="@+id/m_btn0"
+                android:id="@+id/c_btn0"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -270,7 +340,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/m_btn9"
+                android:id="@+id/c_btn9"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -281,7 +351,7 @@
                 android:textSize="34sp" />
 
             <Button
-                android:id="@+id/m_btn6"
+                android:id="@+id/c_btn6"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -292,7 +362,7 @@
                 android:textSize="34sp" />
 
             <Button
-                android:id="@+id/m_btn3"
+                android:id="@+id/c_btn3"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -303,7 +373,7 @@
                 android:textSize="34sp" />
 
             <Button
-                android:id="@+id/m_btn_comma"
+                android:id="@+id/c_btn_comma"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -322,7 +392,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/m_btn_multi"
+                android:id="@+id/c_btn_clear"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -338,7 +408,7 @@
                 android:typeface="serif" />
 
             <Button
-                android:id="@+id/m_btn_minus"
+                android:id="@+id/c_btn_erase"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -352,7 +422,22 @@
                 android:typeface="serif" />
 
             <Button
-                android:id="@+id/btn_go"
+                android:id="@+id/c_plus_minus"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_rectangle_convert_button"
+                android:fontFamily="@font/roboto"
+                android:text="+/-"
+                android:textColor="@color/Orange"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:typeface="serif" />
+
+            <Button
+                android:id="@+id/c_btn_go"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

@@ -22,6 +22,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:alpha="0.3"
             style="?android:attr/borderlessButtonStyle"
             android:orientation="vertical" >
 
@@ -50,6 +51,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:alpha="0.3"
             style="?android:attr/borderlessButtonStyle"
             android:orientation="vertical" >
 
@@ -78,6 +80,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:alpha="0.3"
             style="?android:attr/borderlessButtonStyle"
             android:orientation="vertical" >
 

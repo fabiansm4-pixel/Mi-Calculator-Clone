@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class MoneyFragment extends Fragment {
 
@@ -29,13 +30,22 @@ public class MoneyFragment extends Fragment {
                 int id = v.getId();
                 switch (id) {
                     case R.id.investments_button:
-                        callViewByKey("viewInvestments");
+                        Toast.makeText(getContext(),
+                                "Данный конвертер временно недоступен.",
+                                Toast.LENGTH_SHORT).show();
+//                        callViewByKey("viewInvestments");
                         break;
                     case R.id.currency_button:
-                        callViewByKey("viewCurrency");
+                        Toast.makeText(getContext(),
+                                "Данный конвертер временно недоступен.",
+                                Toast.LENGTH_SHORT).show();
+//                        callViewByKey("viewCurrency");
                         break;
                     case R.id.credit_button:
-                        callViewByKey("viewCredit");
+                        Toast.makeText(getContext(),
+                                "Данный конвертер временно недоступен.",
+                                Toast.LENGTH_SHORT).show();
+//                        callViewByKey("viewCredit");
                         break;
                     case R.id.split_bill_button:
                         callViewByKey("viewSplitBill");

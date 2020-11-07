@@ -33,4 +33,47 @@
     <string name="credit">Кредит</string>
     <string name="credit_calc">Кредитный калькулятор</string>
     <string name="split_bill">Разделить счёт</string>
+
+    <string-array name="lengths">
+        <item>Километры</item>
+        <item>Метры</item>
+        <item>Дециметры</item>
+        <item>Сантиметры</item>
+        <item>Миллиметры</item>
+        <item>Микрометры (микроны)</item>
+        <item>Нанометры</item>
+        <item>Морские мили</item>
+        <item>Мили</item>
+        <item>Ярды</item>
+        <item>Футы</item>
+        <item>Дюймы</item>
+    </string-array>
+
+    <string-array name="lengthsShort">
+        <item>км</item>
+        <item>м</item>
+        <item>дм</item>
+        <item>см</item>
+        <item>мм</item>
+        <item>мкм</item>
+        <item>нм</item>
+        <item>nmi</item>
+        <item>mi</item>
+        <item>ярд</item>
+        <item>ft</item>
+        <item>in</item>
+    </string-array>
+
+    <string-array name="temperature">
+        <item>Цельсий</item>
+        <item>Фаренгейт</item>
+        <item>Кельвин</item>
+    </string-array>
+
+    <string-array name="temperatureShort">
+        <item>°C</item>
+        <item>°F</item>
+        <item>K</item>
+    </string-array>
+
 </resources>

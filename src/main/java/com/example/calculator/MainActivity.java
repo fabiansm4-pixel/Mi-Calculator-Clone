@@ -85,17 +85,21 @@ public class MainActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
-                if (Settings.canDrawOverlays(MainActivity.this)) {
-                    Intent intent = new Intent(MainActivity.this, MultiWindowActivity.class);
-                    startService(intent);
-                    finishAndRemoveTask();
-                    onBackPressed();
-                } else {
-                    askPermission();
-                    Toast.makeText(MainActivity.this,
-                            "Необходимо предоставить доступ приложению",
-                            Toast.LENGTH_SHORT).show();
-                }
+                Toast.makeText(getApplication(),
+                        "Мини-версия калькулятора временно недоступна.",
+                        Toast.LENGTH_SHORT).show();
+
+//                if (Settings.canDrawOverlays(MainActivity.this)) {
+//                    Intent intent = new Intent(MainActivity.this, MultiWindowActivity.class);
+//                    startService(intent);
+//                    finishAndRemoveTask();
+//                    onBackPressed();
+//                } else {
+//                    askPermission();
+//                    Toast.makeText(MainActivity.this,
+//                            "Необходимо предоставить доступ приложению",
+//                            Toast.LENGTH_SHORT).show();
+//                }
             }
         });
 
@@ -247,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
                 assert inflater != null;
-                View popupView = inflater.inflate(R.layout.popup_window, null);
+                View popupView = inflater.inflate(R.layout.popup_window_menu, null);
 
                 int width = LinearLayout.LayoutParams.WRAP_CONTENT;
                 int height = LinearLayout.LayoutParams.WRAP_CONTENT;
