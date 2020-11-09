@@ -64,6 +64,68 @@
         <item>in</item>
     </string-array>
 
+    <string-array name="squares">
+        <item>Квадратные километры</item>
+        <item>Гектары</item>
+        <item>Ары (сотки)</item>
+        <item>Квадратные метры</item>
+        <item>Квадратные дециметры</item>
+        <item>Квадратные сантиметры</item>
+        <item>Квадратные миллиметры</item>
+        <item>Квадратные микроны</item>
+        <item>Акры</item>
+        <item>Квадратные мили</item>
+        <item>Квадратные ярды</item>
+        <item>Квадратные футы</item>
+        <item>Квадратные дюймы</item>
+    </string-array>
+
+    <string-array name="squaresShort">
+        <item>км²</item>
+        <item>ha</item>
+        <item>a</item>
+        <item>м²</item>
+        <item>дм²</item>
+        <item>см²</item>
+        <item>мм²</item>
+        <item>мкм²</item>
+        <item>акр</item>
+        <item>mi²</item>
+        <item>ярд²</item>
+        <item>ft²</item>
+        <item>in²</item>
+    </string-array>
+
+    <string-array name="volumes">
+        <item>Кубические метры</item>
+        <item>Кубические дециметры</item>
+        <item>Кубические сантиметры</item>
+        <item>Кубические миллиметры</item>
+        <item>Гектолитры</item>
+        <item>Литры</item>
+        <item>Децилитры</item>
+        <item>Сантилитры</item>
+        <item>Миллилитры</item>
+        <item>Кубические ярды</item>
+        <item>Кубические футы</item>
+        <item>Кубические дюймы</item>
+    </string-array>
+
+    <string-array name="volumesShort">
+        <item>м³</item>
+        <item>дм³</item>
+        <item>см³</item>
+        <item>мм³</item>
+        <item>гл</item>
+        <item>л</item>
+        <item>дл</item>
+        <item>сл</item>
+        <item>мл</item>
+        <item>ярд³</item>
+        <item>ft³</item>
+        <item>in³</item>
+    </string-array>
+
     <string-array name="temperature">
         <item>Цельсий</item>
         <item>Фаренгейт</item>
@@ -76,4 +138,75 @@
         <item>K</item>
     </string-array>
 
+    <string-array name="speeds">
+        <item>Метры в секунду</item>
+        <item>Километры в час</item>
+        <item>Километры в секунду</item>
+        <item>Махи</item>
+        <item>Узлы</item>
+        <item>Мили в час</item>
+        <item>Дюймы в секунду</item>
+        <item>Футы в секунду</item>
+        <item>Скорость света</item>
+    </string-array>
+
+    <string-array name="speedsShort">
+        <item>м/с</item>
+        <item>км/ч</item>
+        <item>км/с</item>
+        <item>М</item>
+        <item>уз</item>
+        <item>миль/ч</item>
+        <item>ips</item>
+        <item>fps</item>
+        <item>c</item>
+    </string-array>
+
+    <string-array name="time">
+        <item>Годы</item>
+        <item>Недели</item>
+        <item>Дни</item>
+        <item>Часы</item>
+        <item>Минуты</item>
+        <item>Секунды</item>
+        <item>Миллисекунды</item>
+        <item>Микросекунды</item>
+        <item>Пикосекунды</item>
+    </string-array>
+
+    <string-array name="timeShort">
+        <item>г</item>
+        <item>н</item>
+        <item>д</item>
+        <item>ч</item>
+        <item>мин</item>
+        <item>сек</item>
+        <item>мс</item>
+        <item>мкс</item>
+        <item>пс</item>
+    </string-array>
+
+    <string-array name="weight">
+        <item>Тонна</item>
+        <item>Центнер</item>
+        <item>Килограмм</item>
+        <item>Грамм</item>
+        <item>Миллиграмм</item>
+        <item>Микрограмм</item>
+        <item>Фунт</item>
+        <item>Унция</item>
+        <item>Карат</item>
+    </string-array>
+
+    <string-array name="weightShort">
+        <item>т</item>
+        <item>ц</item>
+        <item>кг</item>
+        <item>г</item>
+        <item>мг</item>
+        <item>мкг</item>
+        <item>lb</item>
+        <item>oz</item>
+        <item>кар</item>
+    </string-array>
 </resources>

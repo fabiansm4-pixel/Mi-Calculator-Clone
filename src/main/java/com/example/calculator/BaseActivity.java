@@ -2,7 +2,6 @@ package com.example.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
@@ -28,10 +27,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -51,16 +48,13 @@ import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
-import java.time.format.TextStyle;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class BaseActivity extends AppCompatActivity {
@@ -118,6 +112,14 @@ public class BaseActivity extends AppCompatActivity {
 
     double valueOne;
     double valueTwo;
+
+    //получаем HashMap из класса Coefficients
+    HashMap<String, Double> toLength = new Coefficients().toLength();
+    HashMap<String, Double> toSquare = new Coefficients().toSquare();
+    HashMap<String, Double> toVolume = new Coefficients().toVolume();
+    HashMap<String, Double> toSpeed = new Coefficients().toSpeed();
+    HashMap<String, Double> toTime = new Coefficients().toTime();
+    HashMap<String, Double> toWeight = new Coefficients().toWeight();
 
     @SuppressLint({"ResourceType", "SetTextI18n", "ClickableViewAccessibility"})
     @Override
@@ -368,8 +370,23 @@ public class BaseActivity extends AppCompatActivity {
                     case "viewLength":
                         calculateLength();
                         break;
+                    case "viewSquare":
+                        calculateSquare();
+                        break;
+                    case "viewVolume":
+                        calculateVolume();
+                        break;
                     case "viewTemperature":
                         calculateTemperature();
+                        break;
+                    case "viewSpeed":
+                        calculateSpeed();
+                        break;
+                    case "viewTime":
+                        calculateTime();
+                        break;
+                    case "viewWeight":
+                        calculateWeight();
                         break;
                     case "viewSplitBill":
                         calculateSplitBill();
@@ -436,22 +453,22 @@ public class BaseActivity extends AppCompatActivity {
                     createViewLength();
                     break;
                 case "viewSquare":
-                    toolbarBaseTitle.setText(getString(R.string.square_calc));
+                    createViewSquare();
                     break;
                 case "viewVolume":
-                    toolbarBaseTitle.setText(getString(R.string.volume_calc));
+                    createViewVolume();
                     break;
                 case "viewTemperature":
                     createViewTemperature();
                     break;
                 case "viewSpeed":
-                    toolbarBaseTitle.setText(getString(R.string.speed_calc));
+                    createViewSpeed();
                     break;
                 case "viewTime":
-                    toolbarBaseTitle.setText(getString(R.string.time_calc));
+                    createViewTime();
                     break;
                 case "viewWeight":
-                    toolbarBaseTitle.setText(getString(R.string.weight_calc));
+                    createViewWeight();
                     break;
                 case "viewScaleOfNotation":
                     toolbarBaseTitle.setText(getString(R.string.scale_of_notation));
@@ -1280,20 +1297,6 @@ public class BaseActivity extends AppCompatActivity {
             lengthsUnion[i] = lengthsLong[i] + " " + lengthsShort[i];
         }
 
-        HashMap<String, Double> toLength = new HashMap<>();
-        toLength.put("км", 1000.0);
-        toLength.put("м", 1.0);
-        toLength.put("дм", 0.1);
-        toLength.put("см", 0.01);
-        toLength.put("мм", 0.001);
-        toLength.put("мкм", 0.000001);
-        toLength.put("нм", 0.000000001);
-        toLength.put("nmi", 1852.0);
-        toLength.put("mi", 1609.344);
-        toLength.put("ярд", 0.9144);
-        toLength.put("ft", 0.3048);
-        toLength.put("in", 0.0254);
-
         string1_spinner.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_UP) {
                 isSelectedSpinner = true;
@@ -1318,20 +1321,6 @@ public class BaseActivity extends AppCompatActivity {
     //расчет для окна "Конвертер длины"
     @SuppressLint({"SetTextI18n", "ClickableViewAccessibility"})
     public void calculateLength() {
-        HashMap<String, Double> toLength = new HashMap<>();
-        toLength.put("км", 1000.0);
-        toLength.put("м", 1.0);
-        toLength.put("дм", 0.1);
-        toLength.put("см", 0.01);
-        toLength.put("мм", 0.001);
-        toLength.put("мкм", 0.000001);
-        toLength.put("нм", 0.000000001);
-        toLength.put("nmi", 1852.0);
-        toLength.put("mi", 1609.344);
-        toLength.put("ярд", 0.9144);
-        toLength.put("ft", 0.3048);
-        toLength.put("in", 0.0254);
-
         if (isSelectedTextView) {
             sValueOne = toFormatString(sInput, "", 10);
             valueOne = Double.parseDouble(sValueOne);
@@ -1339,8 +1328,7 @@ public class BaseActivity extends AppCompatActivity {
             string1_input.setText(tvOut);
 
             double res1 = valueOne * toLength.get(string1_spinner.getSelectedItem().toString())
-                    * 1 / (toLength.get(string2_spinner.getSelectedItem().toString()));
-//            tvOut = toExpression(toFormatDouble(res1, "ru", 10));
+                    * 1.0 / (toLength.get(string2_spinner.getSelectedItem().toString()));
             tvOut = toFormatDouble(res1, "ru", 10);
             string2_input.setText(tvOut);
         } else {
@@ -1350,19 +1338,155 @@ public class BaseActivity extends AppCompatActivity {
             string2_input.setText(tvOut);
 
             double res2 = valueTwo * toLength.get(string2_spinner.getSelectedItem().toString())
-                    * 1 / (toLength.get(string1_spinner.getSelectedItem().toString()));
+                    * 1.0 / (toLength.get(string1_spinner.getSelectedItem().toString()));
             tvOut = toFormatDouble(res2, "ru", 10);
             string1_input.setText(tvOut);
         }
-
-//        if (sResult.matches("\\D+")) {
-//            string3_output.setText("0");
-//        } else
-//            string3_output.setText(sResult);
-
     }
 
+    //вызов окна "Конвертер площади"
+    @SuppressLint("ClickableViewAccessibility")
+    public void createViewSquare() {
+        toolbarBaseTitle.setText(getString(R.string.square_calc));
+        view_converter_string3.setVisibility(View.INVISIBLE);
+        view_converter_string4.setVisibility(View.GONE);
+        string1_editText.setVisibility(View.GONE);
+        string2_editText.setVisibility(View.GONE);
+        c_plus_minus.setVisibility(View.GONE);
+        c_btn_go.setVisibility(View.GONE);
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                R.layout.spinner_custom, getResources().getStringArray(R.array.squaresShort));
+        string1_spinner.setAdapter(adapter);
+        string1_spinner.setSelection(selectedPositionInSpinner);
+        string1_add.setText(getResources().getStringArray(R.array.squares)[selectedPositionInSpinner]);
+
+        String[] squaresLong = getResources().getStringArray(R.array.squares);
+        String[] squaresShort = getResources().getStringArray(R.array.squaresShort);
+        String[] squaresUnion = new String[squaresLong.length];
+
+        for (int i = 0; i < squaresLong.length; i++) {
+            squaresUnion[i] = squaresLong[i] + " " + squaresShort[i];
+        }
+
+        string1_spinner.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                isSelectedSpinner = true;
+                converterAlertDialog(squaresUnion, squaresLong, string1_spinner, toSquare);
+            }
+            return true;
+        });
+
+        string2_spinner.setAdapter(adapter);
+        string2_spinner.setSelection(selectedPositionInSpinner);
+        string2_add.setText(getResources().getStringArray(R.array.squares)[selectedPositionInSpinner]);
+
+        string2_spinner.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                isSelectedSpinner = false;
+                converterAlertDialog(squaresUnion, squaresLong, string2_spinner, toSquare);
+            }
+            return true;
+        });
+    }
+
+    //расчет для окна "Конвертер площади"
+    @SuppressLint({"SetTextI18n", "ClickableViewAccessibility"})
+    public void calculateSquare() {
+        if (isSelectedTextView) {
+            sValueOne = toFormatString(sInput, "", 10);
+            valueOne = Double.parseDouble(sValueOne);
+            tvOut = toExpression(toFormatString(sInput, "ru", 10));
+            string1_input.setText(tvOut);
+
+            double res1 = valueOne * toSquare.get(string1_spinner.getSelectedItem().toString())
+                    * 1.0 / (toSquare.get(string2_spinner.getSelectedItem().toString()));
+            tvOut = toFormatDouble(res1, "ru", 10);
+            string2_input.setText(tvOut);
+        } else {
+            sValueTwo = toFormatString(sInput, "", 10);
+            valueTwo = Double.parseDouble(sValueTwo);
+            tvOut = toExpression(toFormatString(sInput, "ru", 10));
+            string2_input.setText(tvOut);
+
+            double res2 = valueTwo * toSquare.get(string2_spinner.getSelectedItem().toString())
+                    * 1.0 / (toSquare.get(string1_spinner.getSelectedItem().toString()));
+            tvOut = toFormatDouble(res2, "ru", 10);
+            string1_input.setText(tvOut);
+        }
+    }
+
+    //вызов окна "Конвертер объема"
+    @SuppressLint("ClickableViewAccessibility")
+    public void createViewVolume() {
+        toolbarBaseTitle.setText(getString(R.string.volume_calc));
+        view_converter_string3.setVisibility(View.INVISIBLE);
+        view_converter_string4.setVisibility(View.GONE);
+        string1_editText.setVisibility(View.GONE);
+        string2_editText.setVisibility(View.GONE);
+        c_plus_minus.setVisibility(View.GONE);
+        c_btn_go.setVisibility(View.GONE);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                R.layout.spinner_custom, getResources().getStringArray(R.array.volumesShort));
+        string1_spinner.setAdapter(adapter);
+        string1_spinner.setSelection(selectedPositionInSpinner);
+        string1_add.setText(getResources().getStringArray(R.array.volumes)[selectedPositionInSpinner]);
+
+        String[] volumesLong = getResources().getStringArray(R.array.volumes);
+        String[] volumesShort = getResources().getStringArray(R.array.volumesShort);
+        String[] volumesUnion = new String[volumesLong.length];
+
+        for (int i = 0; i < volumesLong.length; i++) {
+            volumesUnion[i] = volumesLong[i] + " " + volumesShort[i];
+        }
+
+        string1_spinner.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                isSelectedSpinner = true;
+                converterAlertDialog(volumesUnion, volumesLong, string1_spinner, toVolume);
+            }
+            return true;
+        });
+
+        string2_spinner.setAdapter(adapter);
+        string2_spinner.setSelection(selectedPositionInSpinner);
+        string2_add.setText(getResources().getStringArray(R.array.squares)[selectedPositionInSpinner]);
+
+        string2_spinner.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                isSelectedSpinner = false;
+                converterAlertDialog(volumesUnion, volumesLong, string2_spinner, toVolume);
+            }
+            return true;
+        });
+    }
+
+    //расчет для окна "Конвертер объема"
+    @SuppressLint({"SetTextI18n", "ClickableViewAccessibility"})
+    public void calculateVolume() {
+        if (isSelectedTextView) {
+            sValueOne = toFormatString(sInput, "", 10);
+            valueOne = Double.parseDouble(sValueOne);
+            tvOut = toExpression(toFormatString(sInput, "ru", 10));
+            string1_input.setText(tvOut);
+
+            double res1 = valueOne * toVolume.get(string1_spinner.getSelectedItem().toString())
+                    * 1.0 / (toVolume.get(string2_spinner.getSelectedItem().toString()));
+            tvOut = toFormatDouble(res1, "ru", 10);
+            string2_input.setText(tvOut);
+        } else {
+            sValueTwo = toFormatString(sInput, "", 10);
+            valueTwo = Double.parseDouble(sValueTwo);
+            tvOut = toExpression(toFormatString(sInput, "ru", 10));
+            string2_input.setText(tvOut);
+
+            double res2 = valueTwo * toVolume.get(string2_spinner.getSelectedItem().toString())
+                    * 1.0 / (toVolume.get(string1_spinner.getSelectedItem().toString()));
+            tvOut = toFormatDouble(res2, "ru", 10);
+            string1_input.setText(tvOut);
+        }
+    }
 
     //вызов окна "Конвертер температуры"
     @SuppressLint("ClickableViewAccessibility")
@@ -1450,7 +1574,7 @@ public class BaseActivity extends AppCompatActivity {
 //        (5 K − 273,15) × 9/5 + 32 = -450,7 °F - 5 кельвин в фаренгейт
 //        5 K − 273,15 = -268,1 °C              - 5 кельвин в цельсий
 
-        double result = 0.0;
+        double result;
 
         double Cel_To_Kel = degree + 273.15;
         double Cel_To_Far = degree * (9.0 / 5) + 32;
@@ -1584,7 +1708,221 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
+    //вызов окна "Конвертер скорости"
+    @SuppressLint("ClickableViewAccessibility")
+    public void createViewSpeed() {
+        toolbarBaseTitle.setText(getString(R.string.speed_calc));
+        view_converter_string3.setVisibility(View.INVISIBLE);
+        view_converter_string4.setVisibility(View.GONE);
+        string1_editText.setVisibility(View.GONE);
+        string2_editText.setVisibility(View.GONE);
+        c_plus_minus.setVisibility(View.GONE);
+        c_btn_go.setVisibility(View.GONE);
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                R.layout.spinner_custom, getResources().getStringArray(R.array.speedsShort));
+        string1_spinner.setAdapter(adapter);
+        string1_spinner.setSelection(selectedPositionInSpinner);
+        string1_add.setText(getResources().getStringArray(R.array.speeds)[selectedPositionInSpinner]);
+
+        String[] speedsLong = getResources().getStringArray(R.array.speeds);
+        String[] speedsShort = getResources().getStringArray(R.array.speedsShort);
+        String[] speedsUnion = new String[speedsLong.length];
+
+        for (int i = 0; i < speedsLong.length; i++) {
+            speedsUnion[i] = speedsLong[i] + " " + speedsShort[i];
+        }
+
+        string1_spinner.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                isSelectedSpinner = true;
+                converterAlertDialog(speedsUnion, speedsLong, string1_spinner, toSpeed);
+            }
+            return true;
+        });
+
+        string2_spinner.setAdapter(adapter);
+        string2_spinner.setSelection(selectedPositionInSpinner);
+        string2_add.setText(getResources().getStringArray(R.array.speeds)[selectedPositionInSpinner]);
+
+        string2_spinner.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                isSelectedSpinner = false;
+                converterAlertDialog(speedsUnion, speedsLong, string2_spinner, toSpeed);
+            }
+            return true;
+        });
+    }
+
+    //расчет для окна "Конвертер скорости"
+    @SuppressLint({"SetTextI18n", "ClickableViewAccessibility"})
+    public void calculateSpeed() {
+        if (isSelectedTextView) {
+            sValueOne = toFormatString(sInput, "", 10);
+            valueOne = Double.parseDouble(sValueOne);
+            tvOut = toExpression(toFormatString(sInput, "ru", 10));
+            string1_input.setText(tvOut);
+
+            double res1 = valueOne * toSpeed.get(string1_spinner.getSelectedItem().toString())
+                    * 1.0 / (toSpeed.get(string2_spinner.getSelectedItem().toString()));
+            tvOut = toFormatDouble(res1, "ru", 10);
+            string2_input.setText(tvOut);
+        } else {
+            sValueTwo = toFormatString(sInput, "", 10);
+            valueTwo = Double.parseDouble(sValueTwo);
+            tvOut = toExpression(toFormatString(sInput, "ru", 10));
+            string2_input.setText(tvOut);
+
+            double res2 = valueTwo * toSpeed.get(string2_spinner.getSelectedItem().toString())
+                    * 1.0 / (toSpeed.get(string1_spinner.getSelectedItem().toString()));
+            tvOut = toFormatDouble(res2, "ru", 10);
+            string1_input.setText(tvOut);
+        }
+    }
+
+    //вызов окна "Конвертер времени"
+    @SuppressLint("ClickableViewAccessibility")
+    public void createViewTime() {
+        toolbarBaseTitle.setText(getString(R.string.time_calc));
+        view_converter_string3.setVisibility(View.INVISIBLE);
+        view_converter_string4.setVisibility(View.GONE);
+        string1_editText.setVisibility(View.GONE);
+        string2_editText.setVisibility(View.GONE);
+        c_plus_minus.setVisibility(View.GONE);
+        c_btn_go.setVisibility(View.GONE);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                R.layout.spinner_custom, getResources().getStringArray(R.array.timeShort));
+        string1_spinner.setAdapter(adapter);
+        string1_spinner.setSelection(selectedPositionInSpinner);
+        string1_add.setText(getResources().getStringArray(R.array.time)[selectedPositionInSpinner]);
+
+        String[] timeLong = getResources().getStringArray(R.array.time);
+        String[] timeShort = getResources().getStringArray(R.array.timeShort);
+        String[] timeUnion = new String[timeLong.length];
+
+        for (int i = 0; i < timeLong.length; i++) {
+            timeUnion[i] = timeLong[i] + " " + timeShort[i];
+        }
+
+        string1_spinner.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                isSelectedSpinner = true;
+                converterAlertDialog(timeUnion, timeLong, string1_spinner, toTime);
+            }
+            return true;
+        });
+
+        string2_spinner.setAdapter(adapter);
+        string2_spinner.setSelection(selectedPositionInSpinner);
+        string2_add.setText(getResources().getStringArray(R.array.time)[selectedPositionInSpinner]);
+
+        string2_spinner.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                isSelectedSpinner = false;
+                converterAlertDialog(timeUnion, timeLong, string2_spinner, toTime);
+            }
+            return true;
+        });
+    }
+
+    //расчет для окна "Конвертер времени"
+    @SuppressLint({"SetTextI18n", "ClickableViewAccessibility"})
+    public void calculateTime() {
+        if (isSelectedTextView) {
+            sValueOne = toFormatString(sInput, "", 10);
+            valueOne = Double.parseDouble(sValueOne);
+            tvOut = toExpression(toFormatString(sInput, "ru", 10));
+            string1_input.setText(tvOut);
+
+            double res1 = valueOne * toTime.get(string1_spinner.getSelectedItem().toString())
+                    * 1.0 / (toTime.get(string2_spinner.getSelectedItem().toString()));
+            tvOut = toFormatDouble(res1, "ru", 10);
+            string2_input.setText(tvOut);
+        } else {
+            sValueTwo = toFormatString(sInput, "", 10);
+            valueTwo = Double.parseDouble(sValueTwo);
+            tvOut = toExpression(toFormatString(sInput, "ru", 10));
+            string2_input.setText(tvOut);
+
+            double res2 = valueTwo * toTime.get(string2_spinner.getSelectedItem().toString())
+                    * 1.0 / (toTime.get(string1_spinner.getSelectedItem().toString()));
+            tvOut = toFormatDouble(res2, "ru", 10);
+            string1_input.setText(tvOut);
+        }
+    }
+
+    //вызов окна "Конвертер массы"
+    @SuppressLint("ClickableViewAccessibility")
+    public void createViewWeight() {
+        toolbarBaseTitle.setText(getString(R.string.weight_calc));
+        view_converter_string3.setVisibility(View.INVISIBLE);
+        view_converter_string4.setVisibility(View.GONE);
+        string1_editText.setVisibility(View.GONE);
+        string2_editText.setVisibility(View.GONE);
+        c_plus_minus.setVisibility(View.GONE);
+        c_btn_go.setVisibility(View.GONE);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                R.layout.spinner_custom, getResources().getStringArray(R.array.weightShort));
+        string1_spinner.setAdapter(adapter);
+        string1_spinner.setSelection(selectedPositionInSpinner);
+        string1_add.setText(getResources().getStringArray(R.array.weight)[selectedPositionInSpinner]);
+
+        String[] weightLong = getResources().getStringArray(R.array.weight);
+        String[] weightShort = getResources().getStringArray(R.array.weightShort);
+        String[] weightUnion = new String[weightLong.length];
+
+        for (int i = 0; i < weightLong.length; i++) {
+            weightUnion[i] = weightLong[i] + " " + weightShort[i];
+        }
+
+        string1_spinner.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                isSelectedSpinner = true;
+                converterAlertDialog(weightUnion, weightLong, string1_spinner, toWeight);
+            }
+            return true;
+        });
+
+        string2_spinner.setAdapter(adapter);
+        string2_spinner.setSelection(selectedPositionInSpinner);
+        string2_add.setText(getResources().getStringArray(R.array.weight)[selectedPositionInSpinner]);
+
+        string2_spinner.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                isSelectedSpinner = false;
+                converterAlertDialog(weightUnion, weightLong, string2_spinner, toWeight);
+            }
+            return true;
+        });
+    }
+
+    //расчет для окна "Конвертер массы"
+    @SuppressLint({"SetTextI18n", "ClickableViewAccessibility"})
+    public void calculateWeight() {
+        if (isSelectedTextView) {
+            sValueOne = toFormatString(sInput, "", 10);
+            valueOne = Double.parseDouble(sValueOne);
+            tvOut = toExpression(toFormatString(sInput, "ru", 10));
+            string1_input.setText(tvOut);
+
+            double res1 = valueOne * toWeight.get(string1_spinner.getSelectedItem().toString())
+                    * 1.0 / (toWeight.get(string2_spinner.getSelectedItem().toString()));
+            tvOut = toFormatDouble(res1, "ru", 10);
+            string2_input.setText(tvOut);
+        } else {
+            sValueTwo = toFormatString(sInput, "", 10);
+            valueTwo = Double.parseDouble(sValueTwo);
+            tvOut = toExpression(toFormatString(sInput, "ru", 10));
+            string2_input.setText(tvOut);
+
+            double res2 = valueTwo * toWeight.get(string2_spinner.getSelectedItem().toString())
+                    * 1.0 / (toWeight.get(string1_spinner.getSelectedItem().toString()));
+            tvOut = toFormatDouble(res2, "ru", 10);
+            string1_input.setText(tvOut);
+        }
+    }
 
     //вызов окна "Разелить счет"
     public void createViewSplitBill() {
@@ -1797,6 +2135,7 @@ public class BaseActivity extends AppCompatActivity {
                         case 10:
                         case 11:
                         case 12:
+                        case 13:
                             selectedPositionInSpinner = position;
                             spinner.setSelection(selectedPositionInSpinner);
                             if (isSelectedSpinner) {
@@ -1847,7 +2186,7 @@ public class BaseActivity extends AppCompatActivity {
                 sValueOne = toCalculate(string2_input.getText().toString());
                 valueOne = Double.parseDouble(sValueOne);
                 double res1 = valueOne * hashMap.get(string2_spinner.getSelectedItem().toString())
-                        * 1 / (hashMap.get(string1_spinner.getSelectedItem().toString()));
+                        * 1.0 / (hashMap.get(string1_spinner.getSelectedItem().toString()));
 //                tvOut = toExpression(toFormatDouble(res1, "ru", 10));
                 tvOut = toFormatDouble(res1, "ru", 10);
                 string1_input.setText(tvOut);
@@ -1864,7 +2203,7 @@ public class BaseActivity extends AppCompatActivity {
                 sValueTwo = toCalculate(string1_input.getText().toString());
                 valueTwo = Double.parseDouble(sValueOne);
                 double res2 = valueTwo * hashMap.get(string1_spinner.getSelectedItem().toString())
-                        * 1 / (hashMap.get(string2_spinner.getSelectedItem().toString()));
+                        * 1.0 / (hashMap.get(string2_spinner.getSelectedItem().toString()));
 //                tvOut = toExpression(toFormatDouble(res2, "ru", 10));
                 tvOut = toFormatDouble(res2, "ru", 10);
 //                sValueTwo = tvOut;
@@ -1876,7 +2215,7 @@ public class BaseActivity extends AppCompatActivity {
                 valueTwo = Double.parseDouble(sValueOne);
 //                double value2 = Double.parseDouble(string1_input.getText().toString());
                 double res2 = valueTwo * hashMap.get(string1_spinner.getSelectedItem().toString())
-                        * 1 / (hashMap.get(string2_spinner.getSelectedItem().toString()));
+                        * 1.0 / (hashMap.get(string2_spinner.getSelectedItem().toString()));
 //                tvOut = toExpression(toFormatDouble(res2, "ru", 10));
                 tvOut = toFormatDouble(res2, "ru", 10);
 //                sValueTwo = tvOut;
@@ -1886,7 +2225,7 @@ public class BaseActivity extends AppCompatActivity {
                 valueOne = Double.parseDouble(sValueOne);
 //                double value1 = Double.parseDouble(string2_input.getText().toString());
                 double res1 = valueOne * hashMap.get(string2_spinner.getSelectedItem().toString())
-                        * 1 / (hashMap.get(string1_spinner.getSelectedItem().toString()));
+                        * 1.0 / (hashMap.get(string1_spinner.getSelectedItem().toString()));
 //                tvOut = toExpression(toFormatDouble(res1, "ru", 10));
                 tvOut = toFormatDouble(res1, "ru", 10);
 //                sValueOne = tvOut;
@@ -1950,4 +2289,101 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
+    //класс в котором заполнены HashMap с физическими величинами и их коэффициентами
+    public static class Coefficients {
+        HashMap<String, Double> toLength(){
+            HashMap<String, Double> toLength = new HashMap<>();
+            toLength.put("км", 1000.0);
+            toLength.put("м", 1.0);
+            toLength.put("дм", 0.1);
+            toLength.put("см", 0.01);
+            toLength.put("мм", 0.001);
+            toLength.put("мкм", 0.000001);
+            toLength.put("нм", 0.000000001);
+            toLength.put("nmi", 1852.0);
+            toLength.put("mi", 1609.344);
+            toLength.put("ярд", 0.9144);
+            toLength.put("ft", 0.3048);
+            toLength.put("in", 0.0254);
+            return toLength;
+        }
+
+        HashMap<String, Double> toSquare() {
+            HashMap<String, Double> toSquare = new HashMap<>();
+            toSquare.put("км²", 1000000.0);
+            toSquare.put("ha", 10000.0);
+            toSquare.put("a", 100.0);
+            toSquare.put("м²", 1.0);
+            toSquare.put("дм²", 0.01);
+            toSquare.put("см²", 0.0001);
+            toSquare.put("мм²", 0.000001);
+            toSquare.put("мкм²", 0.000000000001);
+            toSquare.put("акр", 4046.856);
+            toSquare.put("mi²", 2590002.59);
+            toSquare.put("ярд²", 1/1.19599);
+            toSquare.put("ft²", 1/10.76391);
+            toSquare.put("in²", 1/1550.003);
+            return toSquare;
+        }
+
+        HashMap<String, Double> toVolume() {
+            HashMap<String, Double> toVolume = new HashMap<>();
+            toVolume.put("м³", 1.0);
+            toVolume.put("дм³", 0.001);
+            toVolume.put("см³", 0.000001);
+            toVolume.put("мм³", 0.000000001);
+            toVolume.put("гл", 0.1);
+            toVolume.put("л", 0.001);
+            toVolume.put("дл", 0.0001);
+            toVolume.put("сл", 0.00001);
+            toVolume.put("мл", 0.000001);
+            toVolume.put("ярд³", 1/1.307951);
+            toVolume.put("ft³", 1/35.31467);
+            toVolume.put("in³", 1/61023.740);
+            return toVolume;
+        }
+
+        HashMap<String, Double> toSpeed() {
+            HashMap<String, Double> toSpeed = new HashMap<>();
+            toSpeed.put("м/с", 1.0);
+            toSpeed.put("км/ч", 1/3.6);
+            toSpeed.put("км/с", 1000.0);
+            toSpeed.put("М", 340.3);
+            toSpeed.put("уз", 1/1.943845);
+            toSpeed.put("миль/ч", 1/2.236936);
+            toSpeed.put("ips", 1/39.37008);
+            toSpeed.put("fps", 1/3.28084);
+            toSpeed.put("c", 299792458.0);
+            return toSpeed;
+        }
+
+        HashMap<String, Double> toTime() {
+            HashMap<String, Double> toSpeed = new HashMap<>();
+            toSpeed.put("г", 1.0);
+            toSpeed.put("н", 1/52.142849);
+            toSpeed.put("д", 1/365.0);
+            toSpeed.put("ч", 1/8760.0);
+            toSpeed.put("мин", 1/525600.0);
+            toSpeed.put("сек", 1/31536000.0);
+            toSpeed.put("мс", 1/31536000000.0);
+            toSpeed.put("мкс", 1/31536000000000.0);
+            toSpeed.put("пс", 1/31536000000000000000.0);
+            return toSpeed;
+        }
+
+        HashMap<String, Double> toWeight() {
+            HashMap<String, Double> toSpeed = new HashMap<>();
+            toSpeed.put("т", 1000.0);
+            toSpeed.put("ц", 100.0);
+            toSpeed.put("кг", 1.0);
+            toSpeed.put("г", 0.001);
+            toSpeed.put("мг", 0.000001);
+            toSpeed.put("мкг", 0.000000001);
+            toSpeed.put("lb", 1/2.204623);
+            toSpeed.put("oz", 1/35.274);
+            toSpeed.put("кар", 1/5000.0);
+            return toSpeed;
+        }
+    }
 }
+
