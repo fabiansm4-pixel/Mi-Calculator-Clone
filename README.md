@@ -10,6 +10,10 @@
 
 APK-версия приложения: [Calculator.zip](https://github.com/ilyxan89/Mi-Calculator-Clone/files/5325000/Calculator.zip)
 
+Главное окно:
 ![one](https://user-images.githubusercontent.com/71913328/98608112-9660e400-22fb-11eb-9985-231617c67ae8.jpg)
+
+Конвертеры:
 ![two](https://user-images.githubusercontent.com/71913328/98608183-b55f7600-22fb-11eb-936b-6aeed56d4071.jpg)
+
 ![three](https://user-images.githubusercontent.com/71913328/98608187-b8f2fd00-22fb-11eb-94c1-e476c4a3a31b.jpg)
