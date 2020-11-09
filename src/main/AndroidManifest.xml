@@ -46,7 +46,8 @@
         <activity
             android:name=".BaseActivity"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+        </activity>
 
         <service
             android:name=".MultiWindowActivity"

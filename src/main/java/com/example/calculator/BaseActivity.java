@@ -149,7 +149,6 @@ public class BaseActivity extends AppCompatActivity {
         //компоненты ввода-вывода информации на экран
         view_converter_screen = findViewById(R.id.view_converter_screen);
         //элементы первой строки ввода-вывода информации на экран
-//        RelativeLayout view_converter_string1 = findViewById(R.id.view_converter_string1);
         string1_spinner = findViewById(R.id.string1_spinner);
         string1_editText = findViewById(R.id.string1_editText);
         string1_text = findViewById(R.id.string1_text);
@@ -157,7 +156,6 @@ public class BaseActivity extends AppCompatActivity {
         string1_add = findViewById(R.id.string1_add);
 
         //элементы второй строки ввода-вывода информации на экран
-//        RelativeLayout view_converter_string2 = findViewById(R.id.view_converter_string2);
         string2_spinner = findViewById(R.id.string2_spinner);
         string2_editText = findViewById(R.id.string2_editText);
         string2_text = findViewById(R.id.string2_text);
@@ -279,10 +277,6 @@ public class BaseActivity extends AppCompatActivity {
 
                     //Запятая
                     case R.id.c_btn_comma:
-//                        if (isSelectedTextView) {
-//                            sInput = toCalculate(string1_input.getText().toString());
-//                        } else
-//                            sInput = toCalculate(string2_input.getText().toString());
                         if (isSelectedTextView) {
                             sInput = sValueOne;
                         } else
@@ -306,24 +300,9 @@ public class BaseActivity extends AppCompatActivity {
 
                     //удалить 1 знак справа
                     case R.id.c_btn_erase:
-//                        Toast toast = Toast.makeText(getApplication(),
-//                                String.valueOf(valueOne),
-//                                Toast.LENGTH_SHORT);
-//                        toast.show();
-//
-//                        if ((string1_input.getText().toString().length() == 2)
-//                                & (string1_input.getText().toString().contains("-"))) {
-//                            System.out.println("!!!!!!!!! СРАБОТАЛ");
-//                            valueOne = 0;
-////                            sInput = "0";
-//                        }
                         if (sValueOne.isEmpty() || sInput.isEmpty()) {
                             break;
                         }
-//                        if (isSelectedTextView) {
-//                            sInput = sValueOne;
-//                        } else
-//                            sInput = sValueTwo;
                         if (isSelectedTextView) {
                             sInput = toCalculate(string1_input.getText().toString());
                         } else {
@@ -337,7 +316,7 @@ public class BaseActivity extends AppCompatActivity {
 
                     //добавить к значению температуры + или -
                     case R.id.c_plus_minus:
-                        if (sInput.isEmpty() || sInput.equals("0")) {
+                        if (sInput.isEmpty()) {
                             break;
                         }
                         if (isSelectedTextView) {
@@ -1564,16 +1543,6 @@ public class BaseActivity extends AppCompatActivity {
 
     //расчет для окна "Конвертер температуры"
     public double convertTemperature(double degree, String from, String to) {
-        //формулы
-//        5 °C + 273,15 = 278,15 K              - 5 цельсий в кельвин
-//        (5 °C × 9/5) + 32 = 41 °F             - 5 цельсий в фаренгейт
-
-//        (5 °F − 32) × 5/9 = -15 °C            - 5 фаренгейт в цельсий
-//        (5 °F − 32) × 5/9 + 273,15 = 258,15 K - 5 фаренгейт в кельвин
-
-//        (5 K − 273,15) × 9/5 + 32 = -450,7 °F - 5 кельвин в фаренгейт
-//        5 K − 273,15 = -268,1 °C              - 5 кельвин в цельсий
-
         double result;
 
         double Cel_To_Kel = degree + 273.15;
@@ -2182,53 +2151,34 @@ public class BaseActivity extends AppCompatActivity {
     public void calculateConverters(HashMap<String, Double> hashMap) {
         if (isSelectedSpinner) {
             if (!isSelectedTextView) {
-//                String takeValue = toCalculate(string2_input.getText().toString());
                 sValueOne = toCalculate(string2_input.getText().toString());
                 valueOne = Double.parseDouble(sValueOne);
                 double res1 = valueOne * hashMap.get(string2_spinner.getSelectedItem().toString())
                         * 1.0 / (hashMap.get(string1_spinner.getSelectedItem().toString()));
-//                tvOut = toExpression(toFormatDouble(res1, "ru", 10));
                 tvOut = toFormatDouble(res1, "ru", 10);
                 string1_input.setText(tvOut);
-
-//                valueOne = Double.parseDouble(toCalculate(string2_input.getText().toString()));
-//                double res1 = value1 * hashMap.get(string2_spinner.getSelectedItem().toString())
-//                        * 1 / (hashMap.get(string1_spinner.getSelectedItem().toString()));
-////                tvOut = toExpression(toFormatDouble(res1, "ru", 10));
-//                tvOut = toFormatDouble(res1, "ru", 10);
-//                sValueOne = value1;
-//                string1_input.setText(tvOut);
             } else {
-//                double value2 = Double.parseDouble(string1_input.getText().toString());
                 sValueTwo = toCalculate(string1_input.getText().toString());
                 valueTwo = Double.parseDouble(sValueOne);
                 double res2 = valueTwo * hashMap.get(string1_spinner.getSelectedItem().toString())
                         * 1.0 / (hashMap.get(string2_spinner.getSelectedItem().toString()));
-//                tvOut = toExpression(toFormatDouble(res2, "ru", 10));
                 tvOut = toFormatDouble(res2, "ru", 10);
-//                sValueTwo = tvOut;
                 string2_input.setText(tvOut);
             }
         } else {
             if (isSelectedTextView) {
                 sValueTwo = toCalculate(string1_input.getText().toString());
                 valueTwo = Double.parseDouble(sValueOne);
-//                double value2 = Double.parseDouble(string1_input.getText().toString());
                 double res2 = valueTwo * hashMap.get(string1_spinner.getSelectedItem().toString())
                         * 1.0 / (hashMap.get(string2_spinner.getSelectedItem().toString()));
-//                tvOut = toExpression(toFormatDouble(res2, "ru", 10));
                 tvOut = toFormatDouble(res2, "ru", 10);
-//                sValueTwo = tvOut;
                 string2_input.setText(tvOut);
             } else {
                 sValueOne = toCalculate(string2_input.getText().toString());
                 valueOne = Double.parseDouble(sValueOne);
-//                double value1 = Double.parseDouble(string2_input.getText().toString());
                 double res1 = valueOne * hashMap.get(string2_spinner.getSelectedItem().toString())
                         * 1.0 / (hashMap.get(string1_spinner.getSelectedItem().toString()));
-//                tvOut = toExpression(toFormatDouble(res1, "ru", 10));
                 tvOut = toFormatDouble(res1, "ru", 10);
-//                sValueOne = tvOut;
                 string1_input.setText(tvOut);
             }
         }
@@ -2291,7 +2241,7 @@ public class BaseActivity extends AppCompatActivity {
 
     //класс в котором заполнены HashMap с физическими величинами и их коэффициентами
     public static class Coefficients {
-        HashMap<String, Double> toLength(){
+        HashMap<String, Double> toLength() {
             HashMap<String, Double> toLength = new HashMap<>();
             toLength.put("км", 1000.0);
             toLength.put("м", 1.0);
@@ -2320,9 +2270,9 @@ public class BaseActivity extends AppCompatActivity {
             toSquare.put("мкм²", 0.000000000001);
             toSquare.put("акр", 4046.856);
             toSquare.put("mi²", 2590002.59);
-            toSquare.put("ярд²", 1/1.19599);
-            toSquare.put("ft²", 1/10.76391);
-            toSquare.put("in²", 1/1550.003);
+            toSquare.put("ярд²", 1 / 1.19599);
+            toSquare.put("ft²", 1 / 10.76391);
+            toSquare.put("in²", 1 / 1550.003);
             return toSquare;
         }
 
@@ -2337,22 +2287,22 @@ public class BaseActivity extends AppCompatActivity {
             toVolume.put("дл", 0.0001);
             toVolume.put("сл", 0.00001);
             toVolume.put("мл", 0.000001);
-            toVolume.put("ярд³", 1/1.307951);
-            toVolume.put("ft³", 1/35.31467);
-            toVolume.put("in³", 1/61023.740);
+            toVolume.put("ярд³", 1 / 1.307951);
+            toVolume.put("ft³", 1 / 35.31467);
+            toVolume.put("in³", 1 / 61023.740);
             return toVolume;
         }
 
         HashMap<String, Double> toSpeed() {
             HashMap<String, Double> toSpeed = new HashMap<>();
             toSpeed.put("м/с", 1.0);
-            toSpeed.put("км/ч", 1/3.6);
+            toSpeed.put("км/ч", 1 / 3.6);
             toSpeed.put("км/с", 1000.0);
             toSpeed.put("М", 340.3);
-            toSpeed.put("уз", 1/1.943845);
-            toSpeed.put("миль/ч", 1/2.236936);
-            toSpeed.put("ips", 1/39.37008);
-            toSpeed.put("fps", 1/3.28084);
+            toSpeed.put("уз", 1 / 1.943845);
+            toSpeed.put("миль/ч", 1 / 2.236936);
+            toSpeed.put("ips", 1 / 39.37008);
+            toSpeed.put("fps", 1 / 3.28084);
             toSpeed.put("c", 299792458.0);
             return toSpeed;
         }
@@ -2360,14 +2310,14 @@ public class BaseActivity extends AppCompatActivity {
         HashMap<String, Double> toTime() {
             HashMap<String, Double> toSpeed = new HashMap<>();
             toSpeed.put("г", 1.0);
-            toSpeed.put("н", 1/52.142849);
-            toSpeed.put("д", 1/365.0);
-            toSpeed.put("ч", 1/8760.0);
-            toSpeed.put("мин", 1/525600.0);
-            toSpeed.put("сек", 1/31536000.0);
-            toSpeed.put("мс", 1/31536000000.0);
-            toSpeed.put("мкс", 1/31536000000000.0);
-            toSpeed.put("пс", 1/31536000000000000000.0);
+            toSpeed.put("н", 1 / 52.142849);
+            toSpeed.put("д", 1 / 365.0);
+            toSpeed.put("ч", 1 / 8760.0);
+            toSpeed.put("мин", 1 / 525600.0);
+            toSpeed.put("сек", 1 / 31536000.0);
+            toSpeed.put("мс", 1 / 31536000000.0);
+            toSpeed.put("мкс", 1 / 31536000000000.0);
+            toSpeed.put("пс", 1 / 31536000000000000000.0);
             return toSpeed;
         }
 
@@ -2379,9 +2329,9 @@ public class BaseActivity extends AppCompatActivity {
             toSpeed.put("г", 0.001);
             toSpeed.put("мг", 0.000001);
             toSpeed.put("мкг", 0.000000001);
-            toSpeed.put("lb", 1/2.204623);
-            toSpeed.put("oz", 1/35.274);
-            toSpeed.put("кар", 1/5000.0);
+            toSpeed.put("lb", 1 / 2.204623);
+            toSpeed.put("oz", 1 / 35.274);
+            toSpeed.put("кар", 1 / 5000.0);
             return toSpeed;
         }
     }
